@@ -1,2 +1,7 @@
 # toalha_DevOps-Eng-test
-# [Feedback to Senior-DevOps-Engineer] https://github.com/philvadala/devops-tech-test/tree/main/Senior-DevOps-Engineer
+#### [Source] https://github.com/philvadala/devops-tech-test/tree/main/Senior-DevOps-Engineer
+
+This repo is a reply to the Source, where the objective was to provide a code that will provission supplied flask app on cloud container service.
+
+## Approach
+It uses Docker to create the image and then AWS ECR, ECS to provission the container.
