@@ -25,11 +25,15 @@ The gitlab-ci file is writen for gitlab and handles the ci/cd flow. It will crea
 
 ### A. Pre requisits
 1. **Gitlab runner:** Setup the gitlab runner and set "privileged = true" for the runner container.
-2. **AWS access:** Arrange AWS access for the gitlab runner. Here it uses IAM user with access ID and key. The access ID and key has been added in gitlab ci/cd variables as AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. Can take is approach or use OpenID Connect(recommended) to give the access
-
+2. **AWS access:** Arrange AWS access for the gitlab runner. Here it uses IAM user with access ID and key. The access ID and key has been added in gitlab ci/cd variables as AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. Can take is approach or use OpenID Connect(recommended) to give the access.
+> **_NOTE:_**  If OpenID Connect used, then comment out all of these:
+```yml
+before_script:
+    - *aws_profile
+```
 ### B. Edit the code
-1. **Add account ID:** replace all the "account id" (total 4) with the account id of target aws account.
-2. **Update with required container number:** Change the value of desired_count to get the desired number of containers. Currently set as 1
+1. **Add account ID:** replace all the ```<account id>``` (total 4) with the account id of target aws account.
+2. **Update with required container number:** Change the value of ```desired_count``` to get the desired number of containers. Currently set as 1
 
 ### C. Push repo to gitlab
 Push the repo to gitlab.
