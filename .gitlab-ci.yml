@@ -6,14 +6,14 @@ stages:
   - terraform_apply
 
 
-
+## to create the env variable for AWS access
 .aws_profile: &aws_profile
     - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
     - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
     - export AWS_DEFAULT_REGION=ap-southeast-2
 
 
-
+## just checking
 Terraform validate:
   image:
     name: hashicorp/terraform:light
@@ -30,7 +30,9 @@ Terraform validate:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH'
 
 
-
+## builing a docker inside a docker! yes, that reminds of the movie Inception :D
+### this builds the docker image for the provided flask app and registers it to AWS ECR
+#### the stage will only run if any changes made to the docker file or app
 Build docker image:
   image: docker:dind
   variables:
@@ -60,7 +62,8 @@ Build docker image:
           - docker/*
 
 
-
+## lets plan!
+### does the tf plan and creates tfplan artifact for later stage
 Terraform plan:
   image:
     name: hashicorp/terraform:light
@@ -81,7 +84,8 @@ Terraform plan:
       - terraform/my_flask_app.tfplan
 
 
-
+## i applied for a job
+### grabs the artifact tfplan from previous stage and applies
 Terraform apply:
   image:
     name: hashicorp/terraform:light
