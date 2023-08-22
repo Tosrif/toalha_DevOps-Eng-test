@@ -4,4 +4,4 @@
 This repo is a reply to the Source, where the objective was to provide a code that will provission supplied flask app on cloud container service.
 
 ## Approach
-It uses Docker to create the image and then AWS ECR, ECS to provission the container.
+It uses Docker to create the image and then AWS ECR, ECS to provission the container. 
