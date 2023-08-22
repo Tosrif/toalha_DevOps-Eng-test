@@ -31,5 +31,8 @@ The gitlab-ci file is writen for gitlab and handles the ci/cd flow. It will crea
 1. **Add account ID:** replace "account id" with the account id of target aws account.
 2. **Update with required container number:** Change the value of desired_count to get the desired number of containers. Currently set as 1
 
-### C. Run the pipeline
+### C. Push repo to gitlab
+Push the repo to gitlab.
+
+### D. Run the pipeline
 The gitlab-ci file is already ready to be used. It should automatically trigger the pipeline when merged.
