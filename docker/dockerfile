@@ -1,0 +1,17 @@
+# using python slim image
+FROM python:slim
+
+# creating a work directory. can be anything
+WORKDIR /python-flask-app
+
+# copying everything from current dir to container's workdir
+COPY . .
+
+# installing the required packages. in this case just Flask
+RUN pip3 install -r requirements.txt
+
+# sets entrypoint for Flask
+ENV FLASK_APP hello.py
+
+# command to run the python script to start the flask app
+CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0"]
