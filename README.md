@@ -31,6 +31,10 @@ The gitlab-ci file is writen for gitlab and handles the ci/cd flow. It will crea
 before_script:
     - *aws_profile
 ```
+3. **Terraform Backend:** This pipeline uses S3 bucket for terraform state file and dynamoDB for state lock.
+    - Create the S3 bucket ```my-terraform-remotestate```
+    - Create dynamoDB table named ```terraform-state-lock-dynamo```
+   
 ### B. Edit the code
 1. **Add account ID:** replace all the ```<account id>``` (total 4) with the account id of target aws account.
 2. **Update with required container number:** Change the value of ```desired_count``` to get the desired number of containers. Currently set as 1
